@@ -1,10 +1,11 @@
 import os
 
+from app_utils import clone_module
+
 path = ""
-content = os.listdir(path)
 content_upload = []
 
-with open(path) as file:
+with open(path, encoding="utf-8") as file:
     for line in file.readlines():
         line_modify = line.strip()
         if len(line_modify):
@@ -12,7 +13,6 @@ with open(path) as file:
             print(line_modify)
 count = 0
 for module in content_upload:
-    if module in content:
-        count += 1
-        os.system(f"mv {path}/{module} new_add/{module}")
-        print(count)
+    count += 1
+    clone_module('iert_project',module)
+    print(count)
