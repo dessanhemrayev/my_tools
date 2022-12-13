@@ -1,9 +1,18 @@
 import os
-path = ""
-content = os.listdir(path)
+
+from app_utils import merge_files
+
+path = "files"
 content_upload = []
-for module in content:
-    # os.system(f'cd foor_git/{module} && git init')
-    # os.system(f'COPY ".gitignore" foor_git\{module}')
-    # os.system(f'MOVE foor_git\{module} upload')
-    os.system(f'git clone {module}')
+
+# with open(path, encoding="utf-8") as file:
+#     for line in file.readlines():
+#         line_modify = line.strip()
+#         if len(line_modify):
+#             content_upload.append(line_modify)
+#             print(line_modify)
+count = 0
+for filename in os.scandir(path):
+    count += 1
+    merge_files(filename.path)
+    print(count)
